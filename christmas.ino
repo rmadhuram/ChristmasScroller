@@ -1,3 +1,8 @@
+
+/**
+ * Colorduino Christmas Ornament
+ * @author Raj Madhuram, 2014
+ */
 #include "fonts.c"
 #include <Colorduino.h>
 
