@@ -1,3 +1,5 @@
+// From AdaFruit GFX library
+// https://github.com/adafruit/Adafruit-GFX-Library/blob/master/glcdfont.c
 #ifndef FONT5X7_H
 #define FONT5X7_H
 

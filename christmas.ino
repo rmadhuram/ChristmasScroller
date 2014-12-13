@@ -1,9 +1,12 @@
 #include "fonts.c"
 #include <Colorduino.h>
 
-int mode = 1;
+int mode = 0;
+
+// For scroller.
 int stepCounter = 0;
 int scrollCounter = 0;
+int currentGreeting = 0;
 int const MAX_STRINGS = 4;
 const char *greetings[MAX_STRINGS] = {
   "* Merry Christmas! Drop your presents below. *",
@@ -12,8 +15,7 @@ const char *greetings[MAX_STRINGS] = {
   "Emmanuel, God with us "
 };
 
-int currentGreeting = 0;
-
+// For color changing star.
 typedef struct Color {
   int r;
   int g;
@@ -150,19 +152,6 @@ void cc_fill() {
 void loop()
 {
   if (mode == 0) {
-    scroll_drawText(scrollCounter);
-    scrollCounter++;
-    if (scrollCounter >= strlen(greetings[currentGreeting]) * 6) {
-      scrollCounter = 0;
-      currentGreeting = random(MAX_STRINGS);
-      stepCounter++;
-      if (stepCounter == 2) {
-        mode = 1;
-        stepCounter = 0;
-      }
-    }
-    delay(120);
-  } else if (mode == 1) {
     
     colorCounter++;
     cc_fill();
@@ -170,7 +159,7 @@ void loop()
       colorCounter = 0;
       stepCounter++;
       if (stepCounter == 20) {
-        mode = 0;
+        mode = 1;
         stepCounter = 0;
       }
       current.r = target.r;
@@ -183,6 +172,21 @@ void loop()
     }    
     
     delay(200);
+
+  } else if (mode == 1) {
+    
+    scroll_drawText(scrollCounter);
+    scrollCounter++;
+    if (scrollCounter >= strlen(greetings[currentGreeting]) * 6) {
+      scrollCounter = 0;
+      currentGreeting = random(MAX_STRINGS);
+      stepCounter++;
+      if (stepCounter == 2) {
+        mode = 0;
+        stepCounter = 0;
+      }
+    }
+    delay(120);
     
   }
 }
