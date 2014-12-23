@@ -111,11 +111,7 @@ void scroll_drawText(int count) {
   }
   
   for (int j=0; j<8; j++) {
-    if (code % 2) {
-      buffer[7][j] = 1;
-    } else {
-      buffer[7][j] = 0;
-    }
+    buffer[7][j] = code % 2;
     code = code >> 1;
   }
   
