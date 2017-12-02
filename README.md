@@ -3,4 +3,4 @@ ChristmasScroller
 
 Colorduino Christmas ornament
 
-http://geekraj.com/wordpress/?p=923
+http://geekraj.com/?p=923
